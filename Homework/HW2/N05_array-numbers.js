@@ -1,5 +1,6 @@
 "use strict";
 
+console.time("Time this");
 var myBoard = [5, 7, [4, [2], 8, [1, 3, [10, 10]], 2],
     [9, []],
     1, 8
@@ -24,3 +25,5 @@ function showBoard(board) {
     console.log(' ---------------');
     return sum;
 }
+
+console.timeEnd("Time this");
