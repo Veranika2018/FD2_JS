@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <title>Домашнее задание FD2 N20 ROOTS</title>
+</head>
+
+<body>
+    <div id="content">
+        <div class="container">
+            <h1 style="color:darkblue">Вероника Хомич FD2-53-19</h1>
+            <h1>Д.З N20 ROOTS</h1>
+            <input type=button value='корни' onclick='ttt()'>
+            <input type=button value='авто-тесты' onclick='squareRootsTests()'>
+        </div>
+    </div>
+
+    <script>
+        "use strict";
+
+        // находим корни квадратного уравнения
+        // возвращаем массив корней
+
+        function discriminant(a, b, c) {
+            return b * b - 4 * a * c; //дискриминант
+        }
+
+        function lineEq(b, c) {
+
+            if (b != 0) {
+                return [(-c / b)];
+            }
+            if ((b === 0) && (c === 0)) {
+                return [null];
+            }
+            if ((b === 0) && (c != 0)) {
+                return [];
+            }
+        }
+
+        function roots(a, b, c) {
+
+            var d = discriminant(a, b, c);
+            var x1 = (-b + Math.sqrt(d)) / (2 * a);
+            var x2 = (-b - Math.sqrt(d)) / (2 * a);
+            if (x1 === x2) {
+                console.log("x:" + x1);
+            } else {
+                console.log("x1:" + x1, "x2:" + x2);
+            }
+
+            if (a === 0) {
+                var rootline = lineEq(b, c);
+                console.log("Уравнение линейное. x=" + rootline);
+                return rootline;
+            }
+            if ((isFinite(x1)) || (isFinite(x2))) {
+                if (x1 === x2) {
+                    console.log('один корень');
+                    return [x1]; // один корень
+                }
+                console.log('два корня');
+                return [x1, x2]; // два корня
+            } else {
+                console.log('D<0, корней нет');
+                return []; //корней нет
+            }
+        }
+
+        function squareRoots(a, b, c) {
+            try {
+                var q = roots(a, b, c);
+            } catch (ex) {
+                console.error(ex);
+            }
+            return q;
+
+
+        }
+
+        function squareRootsTests() {
+
+            console.log('тест 0,5,-5 -> один корень 1');
+            var roots = squareRoots(0, 5, -5);
+            console.log(((roots.length == 1) && (roots[0] == 1)) ? 'пройден' : 'НЕ ПРОЙДЕН!')
+
+            console.log('тест 1,1,1 -> нет корней');
+            var roots = squareRoots(1, 1, 1);
+            console.log((roots.length == 0) ? 'пройден' : 'НЕ ПРОЙДЕН!')
+
+            console.log('тест -1,-2,15 -> два корня -5,3');
+            var roots = squareRoots(-1, -2, 15);
+            console.log(((roots.length == 2) && (roots[0] == -5) && (roots[1] == 3)) ? 'пройден' : 'НЕ ПРОЙДЕН!')
+
+            console.log('тест 1,12,36 -> один корень -6');
+            var roots = squareRoots(1, 12, 36);
+            console.log(((roots.length == 1) && (roots[0] == -6)) ? 'пройден' : 'НЕ ПРОЙДЕН!')
+
+            console.log('тест 1,-2,-3 -> два корня 3,-1');
+            var roots = squareRoots(1, -2, -3);
+            console.log(((roots.length == 2) && (roots[0] == 3) && (roots[1] == -1)) ? 'пройден' : 'НЕ ПРОЙДЕН!');
+
+        }
+
+        function ttt() {
+            var a = Number(prompt('Введите a'));
+            var b = Number(prompt('Введите b'));
+            var c = Number(prompt('Введите c'));
+            var roots = squareRoots(a, b, c);
+
+            if (!roots.length)
+                alert('корней нет!');
+            else if (roots.length == 1)
+                alert('один корень: ' + roots[0]);
+            else
+                alert('два корня: ' + roots[0] + ' и ' + roots[1]);
+        }
+    </script>
+    <script scr="try.js"></script>
+
+
+</body>
+
+
+</html>
