@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>N13</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+
+    <div id="content">
+        <div class="container">
+            <h1 style="color:darkblue">Вероника Хомич FD2-53-19</h1>
+            <h1>Д.З N13 DRINKS_HASH</h1>
+
+            <div class="drinks-buttons">
+                <form action="#" id="form-button">
+                    <input type="submit" class="button u-full-width button-primary input-drinks" id="add" value="ввод информации о напитке" onclick=addInfo()>
+                    <input type="submit" class="button u-full-width button-primary input-drinks" value="получение информации о напитке" onclick=getInfo()>
+                    <input type="submit" class="button u-full-width button-primary input-drinks" value="удаление информации о напитке" onclick=deleteInfo()>
+                    <input type="submit" class="button u-full-width button-primary input-drinks" value="перечень всех напитков" onclick=allInfo()>
+                </form>
+            </div>
+            <div class="row" id="add-form">
+
+                <div class="six columns">
+                    <label>Описание напитка:</label>
+                    <form action="" id="form-drink">
+
+                        <label>Название напитка:<input type="text" size="40"    value='текила'></label>
+                        <input type="checkbox" name="option1" value="alk" checked>алкогольный
+                        <br>
+                        <label for="des">Рецепт:<textarea id="des"  placeholder='proba recept'style=" width: 780px; height: 126px" >Листья алоэ веры необходимо тщательно вымыть и нарезать мелкими кусочками.
+Надо заранее приготовить стеклянную банку, вместимостью 3 литра, можно больше.
+В нее складывается кубики алоэ и заливаются водкой.
+В смесь добавляется сахар лимон и соль.
+                        
+                           </textarea>
+                        </label>
+                        <button type="button" class="button u-full-width button-primary">Сохранить напиток</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="row" id="get-form">
+
+                <div class="six columns">
+
+                    <form action="" id="get-drink">
+
+                        <label>Введите название напитка:<input type="text" size="40" placeholder='введите напиток' value="текила"></label>
+                        <button type="button" class="button u-full-width button-primary">Вывести данные</button>
+                        <br>
+                        <label>Описание напитка:<textarea id="get-des" class="u-full-width"style=" width: 780px; height: 126px" ></textarea></label>
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="row" id="delete-form">
+
+                <div class="six columns">
+
+                    <form action="#" id="delete-drink">
+                        <label>Введите название удаляемого напитка:<input type="text" size="40" value='текила'></label>
+                        <input type="submit" class="button u-full-width button-primary" value="Удалить">
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="row result" id="all-form">
+                <h2>список напитков:</h2>
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="N13_hashStorage.js"></script>
+    <script src="N13_functions.js"></script>
+</body>
+
+</html>
